@@ -6,11 +6,12 @@
             <v-text-field v-model="name.value.value" :counter="10" :error-messages="name.errorMessage.value"
               label="Name"></v-text-field>
 
-            <v-text-field v-model="password.value.value" :counter="7" :error-messages="password.errorMessage.value"
-              label="Phone Number"></v-text-field>
-
             <v-text-field v-model="email.value.value" :error-messages="email.errorMessage.value"
               label="E-mail"></v-text-field>
+
+            <v-text-field v-model="password.value.value" :counter="7" :error-messages="password.errorMessage.value"
+              label="Password"></v-text-field>
+
 
             <v-btn class="me-4" type="submit">
               submit
@@ -32,9 +33,9 @@ const { handleSubmit } = useForm({
       return 'Name needs to be at least 2 characters.'
     },
     password(value: string) {
-      if (value?.length > 9 && /[0-9-]+/.test(value)) return true
+      if (value?.length >= 9) return true
 
-      return 'Phone number needs to be at least 9 digits.'
+      return 'Password length needs to be at least 9.'
     },
     email(value: string) {
       if (/^[a-z.-]+@[a-z.-]+\.[a-z]+$/i.test(value)) return true

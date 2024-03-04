@@ -13,7 +13,7 @@
           v-model="password.value.value"
           :counter="7"
           :error-messages="password.errorMessage.value"
-          label="Phone Number"
+          label="Password"
           ></v-text-field>
           
           <v-btn
@@ -29,18 +29,14 @@
 </template>
 <script setup lang="ts">
   import { useField, useForm } from 'vee-validate'
+  import router from '../../router';
 
   const { handleSubmit } = useForm({
     validationSchema: {
-      name (value: string) {
-        if (value?.length >= 2) return true
-
-        return 'Name needs to be at least 2 characters.'
-      },
       password (value: string) {
-        if (value?.length > 9 && /[0-9-]+/.test(value)) return true
+        if (value?.length >= 9 ) return true
 
-        return 'Phone number needs to be at least 9 digits.'
+        return 'Password length needs to be at least 9 digits.'
       },
       email (value: string) {
         if (/^[a-z.-]+@[a-z.-]+\.[a-z]+$/i.test(value)) return true
@@ -53,6 +49,6 @@
   const email = useField('email')
 
   const submit = handleSubmit(values => {
-    alert(JSON.stringify(values, null, 2))
+    router.push('/homepage')
   })
 </script>
