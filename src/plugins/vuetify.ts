@@ -6,6 +6,8 @@ import * as directives from 'vuetify/directives';
 import * as labsComponents from 'vuetify/labs/components';
 // Translations provided by Vuetify
 import { en } from 'vuetify/locale';
+import '@mdi/font/css/materialdesignicons.css'
+
 
 // Misc
 
